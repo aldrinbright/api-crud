@@ -25,33 +25,58 @@ function Listing() {
       });
   }
 
-  const handleCheckboxChange = (index) => {
-    axios
-      .put(`http://localhost:3000/todoList/${index}`)
+  const handleCheckboxChange = (id, isChecked) => {
+    const updatedItem = {
+      ...data.find((item) => item.id === id),
+      isChecked: !isChecked,
+    };
 
+    console.log(updatedItem);
+
+    axios
+      .put(`http://localhost:3000/todoList/${id}`, updatedItem)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
+        // Update the local state after successful update on the server
+        setData((prevData) =>
+          prevData.map((item) => (item.id === id ? updatedItem : item))
+        );
+      })
+      .catch((err) => {
+        console.error(err);
       });
   };
-
-  
 
   return (
     <div>
       <div className="todoList">
         {data.map((data, index) => (
           <div key={index}>
-            <h1>{data.title}</h1>
+            <h1
+              style={
+                data.isChecked ? {
+                   color: "red" ,
+                  "text-decoration" : "line-through"
+                  
+                  } : {
+                    
+                    color: "black" 
+                    
+                   }
+              }
+            >
+              {data.title}
+            </h1>
 
             <div className="button">
               <input
                 type="checkbox"
                 checked={data.isChecked}
-                onChange={() => handleCheckboxChange(data.id)}
+                onChange={(e) => handleCheckboxChange(data.id, data.isChecked)}
               />
 
               <button onClick={() => handleDelete(data.id)} className="delete">
-                X{" "}
+                X
               </button>
             </div>
           </div>
