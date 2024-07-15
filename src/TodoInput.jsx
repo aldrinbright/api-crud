@@ -10,7 +10,11 @@ function TodoInput() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios.post("http://localhost:3000/todoList", input).then((res) => {
+    axios.post("http://localhost:3000/todoList", input)
+
+
+    .then((res) => {
+        console.log(res);
       setInput({
         title: "",
         id: Math.random().toString(36).substr(2, 9),

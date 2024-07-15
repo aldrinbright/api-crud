@@ -1,11 +1,6 @@
 {
   "todoList": [
     {
-      "id": "0ankzyqsi",
-      "title": "learn react js",
-      "isChecked": false
-    },
-    {
       "id": "thcy4fuvn",
       "title": "learn fetch api",
       "isChecked": false
@@ -18,6 +13,11 @@
     {
       "id": "g23tq1itn",
       "title": "learn crud",
+      "isChecked": false
+    },
+    {
+      "id": "g4levnzfx",
+      "title": "learn CRUD",
       "isChecked": false
     }
   ]
