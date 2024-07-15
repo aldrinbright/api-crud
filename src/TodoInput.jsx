@@ -7,20 +7,30 @@ function TodoInput() {
    let [input, setInput] = useState({
     title: '',
     id: '',
+    isChecked: false
 
    });
+
+
+
+
 
     function handleSubmit (e){
 
         e.preventDefault();
         axios.post('http://localhost:3000/todoList', input)
         .then(res => {
-            console.log(res)
+            console.log(res);
+            setInput({
+                title: '',
+                id: '',
+                isChecked: false
+               
+              });
         })
-       
         
-
     }
+
 
 
   return (
@@ -32,8 +42,9 @@ function TodoInput() {
  
 
       <input type="text" 
-      placeholder="Enter your Task"
-      onChange={(e) => setInput({...input,title : e.target.value, id: Math.random().toString(36).substr(2, 9)})}
+        placeholder= 'Enter the Task'
+      
+      onChange={(e) => setInput({...input,title : e.target.value, id: Math.random().toString(36).substr(2, 9), isChecked: false})}
       />
 
       <button type="submit" className="todoSubmit">

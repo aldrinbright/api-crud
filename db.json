@@ -1,48 +1,34 @@
 {
   "todoList": [
     {
-      "title": "install NodeJS",
-      "id": "8b5d"
+      "id": "ztywg3eq7",
+      "title": "Hello 3",
+      "isChecked": false
     },
     {
-      "title": "install Angular CLI",
-      "id": "02c1"
+      "id": "rtzfs4huw",
+      "title": "hggsd",
+      "isChecked": false
     },
     {
-      "title": "create new app",
-      "id": "a9e6"
+      "id": "22schfceu",
+      "title": "gello",
+      "isChecked": false
     },
     {
-      "title": "serve app",
-      "id": "b985"
+      "id": "4clm7dgdn",
+      "title": "dasdasdsad",
+      "isChecked": false
     },
     {
-      "title": "develop app",
-      "id": "879e"
+      "id": "82vgp7jzm",
+      "title": "dasd",
+      "isChecked": false
     },
     {
-      "title": "deploy app",
-      "id": "e517"
-    },
-    {
-      "id": "21",
-      "title": "dd"
-    },
-    {
-      "id": "21",
-      "title": "dsada"
-    },
-    {
-      "id": "2zig2rg96",
-      "title": "hello"
-    },
-    {
-      "id": "6az4k3m0n",
-      "title": "hello2"
-    },
-    {
-      "id": "nldbjje6s",
-      "title": "mango"
+      "id": "b9mbi2w09",
+      "title": "dasdas",
+      "isChecked": false
     }
   ]
 }
