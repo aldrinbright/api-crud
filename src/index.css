@@ -11,3 +11,77 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* !title  */
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+
+}
+
+.title h1{
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+
+/* !input  */
+
+.todoInput {
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.todoInput form {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+
+
+.todoInput  form input{
+  font-size: 1.6rem;
+}
+
+.todoInput button{
+  cursor: pointer;
+  border-radius: 10px;
+
+}
+
+
+/* !list  */
+
+.todoList {
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid red; */
+  width: 50%;
+  margin: 0 auto;
+
+}
+
+.todoList > div{
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todoList > div h1{
+  font-size: 1.6rem;
+  font-weight: 500;
+
+}
+
+
+.todoList > div input[type="checkbox"]{
+  width: 20px;
+  height: 20px;
+}
