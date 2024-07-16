@@ -1,23 +1,13 @@
 {
   "todoList": [
     {
-      "id": "thcy4fuvn",
-      "title": "learn fetch api",
+      "id": "gzd3exipr",
+      "title": "hello",
       "isChecked": false
     },
     {
-      "id": "udhu9dnn4",
-      "title": "learn async await",
-      "isChecked": false
-    },
-    {
-      "id": "g23tq1itn",
-      "title": "learn crud",
-      "isChecked": false
-    },
-    {
-      "id": "g4levnzfx",
-      "title": "learn CRUD",
+      "id": "avf0u32hm",
+      "title": "dsada",
       "isChecked": false
     }
   ]

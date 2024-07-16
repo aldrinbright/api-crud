@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-function TodoInput() {
+function TodoInput({fetchFun}) {
   let [input, setInput] = useState({
     title: "",
     id: "",
@@ -15,12 +15,18 @@ function TodoInput() {
 
     .then((res) => {
         console.log(res);
+        fetchFun();
       setInput({
         title: "",
         id: Math.random().toString(36).substr(2, 9),
         isChecked: false,
       });
+    })
+    .catch((error) => {
+      console.error("There was an error making the request:", error);
+    
     });
+    
   }
 
   return (

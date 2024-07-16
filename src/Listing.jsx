@@ -1,17 +1,25 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-function Listing() {
+function Listing({fetchData, fetchFun}) {
   const [data, setData] = useState([]);
 
-  // const [isChecked, setIsChecked] = useState(false);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/todoList")
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
-  }, [data]);
+  // async function fetchTodoList() {
+  //   try {
+  //     const res = await axios.get(`http://localhost:3000/todoList`);
+  //     setData(res.data);
+  //     console.log(res.data)
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+  
+  // useEffect(() => {
+   
+  //   fetchTodoList();
+
+  // }, []);
 
   function handleDelete(index) {
     axios
@@ -19,15 +27,18 @@ function Listing() {
       .then((res) => {
         // setData(data => data.filter((item) => item.index !== index));
         console.log(res);
+        fetchFun();
       })
-      .catch((err) => {
-        console.error(err);
+      
+      .catch((error) => {
+        console.error("There was an error making the request:", error);
       });
+
   }
 
   const handleCheckboxChange = (id, isChecked) => {
     const updatedItem = {
-      ...data.find((item) => item.id === id),
+      ...fetchData.find((item) => item.id === id),
       isChecked: !isChecked,
     };
 
@@ -41,6 +52,7 @@ function Listing() {
         setData((prevData) =>
           prevData.map((item) => (item.id === id ? updatedItem : item))
         );
+        fetchFun();
       })
       .catch((err) => {
         console.error(err);
@@ -50,19 +62,18 @@ function Listing() {
   return (
     <div>
       <div className="todoList">
-        {data.map((data, index) => (
+        {fetchData.map((data, index) => (
           <div key={index}>
             <h1
               style={
-                data.isChecked ? {
-                   color: "red" ,
-                  "text-decoration" : "line-through"
-                  
-                  } : {
-                    
-                    color: "black" 
-                    
-                   }
+                data.isChecked
+                  ? {
+                      color: "red",
+                      "text-decoration": "line-through",
+                    }
+                  : {
+                      color: "black",
+                    }
               }
             >
               {data.title}
