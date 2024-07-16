@@ -8,24 +8,32 @@ function TodoInput({fetchFun}) {
     isChecked: false,
   });
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
+
+
+  
     e.preventDefault();
-    axios.post("http://localhost:3000/todoList", input)
 
 
-    .then((res) => {
-        console.log(res);
-        fetchFun();
-      setInput({
-        title: "",
-        id: Math.random().toString(36).substr(2, 9),
-        isChecked: false,
-      });
-    })
-    .catch((error) => {
-      console.error("There was an error making the request:", error);
-    
-    });
+    try {
+      const res =  await axios.post("http://localhost:3000/todoList", input)
+  
+      fetchFun();
+  
+     
+       
+        setInput({
+          title: "",
+          id: Math.random().toString(36).substr(2, 9),
+          isChecked: false,
+        });
+    } catch (error) {
+      console.log(error);
+    }
+
+
+   
+  
     
   }
 

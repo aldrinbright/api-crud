@@ -1,9 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-function Listing({fetchData, fetchFun}) {
+function Listing({ fetchData, fetchFun }) {
   const [data, setData] = useState([]);
-
 
   // async function fetchTodoList() {
   //   try {
@@ -14,49 +13,45 @@ function Listing({fetchData, fetchFun}) {
   //     console.log(err);
   //   }
   // }
-  
+
   // useEffect(() => {
-   
+
   //   fetchTodoList();
 
   // }, []);
 
-  function handleDelete(index) {
-    axios
-      .delete(`http://localhost:3000/todoList/${index}`)
-      .then((res) => {
-        // setData(data => data.filter((item) => item.index !== index));
-        console.log(res);
-        fetchFun();
-      })
-      
-      .catch((error) => {
-        console.error("There was an error making the request:", error);
-      });
+  async function handleDelete(index) {
+    try {
+      const res = await axios.delete(`http://localhost:3000/todoList/${index}`);
 
+      fetchFun();
+      // console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  const handleCheckboxChange = (id, isChecked) => {
-    const updatedItem = {
-      ...fetchData.find((item) => item.id === id),
-      isChecked: !isChecked,
-    };
+  const handleCheckboxChange = async (id, isChecked) => {
+    try {
+      const updatedItem = {
+        ...fetchData.find((item) => item.id === id),
+        isChecked: !isChecked,
+      };
 
-    console.log(updatedItem);
+      // console.log(updatedItem);
 
-    axios
-      .put(`http://localhost:3000/todoList/${id}`, updatedItem)
-      .then((res) => {
-        // console.log(res);
-        // Update the local state after successful update on the server
-        setData((prevData) =>
-          prevData.map((item) => (item.id === id ? updatedItem : item))
-        );
-        fetchFun();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+      const res = await axios.put(
+        `http://localhost:3000/todoList/${id}`,
+        updatedItem
+      );
+
+      setData((prevData) =>
+        prevData.map((item) => (item.id === id ? updatedItem : item))
+      );
+      fetchFun();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

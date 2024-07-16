@@ -11,7 +11,7 @@ function App() {
     try {
       const res = await axios.get(`http://localhost:3000/todoList`);
       setData(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     } catch (err) {
       console.log(err);
     }
